@@ -40,6 +40,16 @@ cd /tmp/
 aws s3 cp Mayur-httpd-logs-01052022-044044.tar s3://${bucket_name}
 echo "Copied tar file to S3 bucket created"
 
+echo "****************/Task 2 Automation Script started /************************"
+
+cd /etc/cron.d
+#write out current crontab
+crontab -l > automation
+#echo new cron into cron file
+echo "0 0 * * * root /root/Automation_Project/automation.sh" >> automation
+#install new cron file
+crontab automation
+
 echo "****************/Task 3 Automation Script started /************************"
 
 FILE=/var/www/html/inventory.html
