@@ -39,3 +39,18 @@ echo "access.log and error.log tar file created and copied to /tmp/ location"
 cd /tmp/
 aws s3 cp Mayur-httpd-logs-01052022-044044.tar s3://${bucket_name}
 echo "Copied tar file to S3 bucket created"
+
+echo "****************/Task 3 Automation Script started /************************"
+
+FILE=/var/www/html/inventory.html
+if [ -f "$FILE" ]; then
+    echo "$FILE exists."
+else 
+    touch /var/www/html/inventory.html
+fi
+
+cat /var/www/html/inventory.html
+
+sed  -i 1i "Log Type,Time Created,Type,Size" inventory.html
+
+sed  -i '1i FID IID PAT MAT SEX PHENOTYPE' inventory.html
